@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+  os:
+    image: ubuntu:22.04
+    tty: true
+    environment:
+      - VAR1=abc
+      - VAR2=def
+    command: /bin/bash -c "apt-get update && apt-get install -y sudo && useradd -m user1 && useradd -m user2 && mkdir -p /home/user1/pastausr1 /home/user2/pastausr2 && echo 'olá user1' > /home/user1/pastausr1/texto.txt && echo 'olá user2' > /home/user2/pastausr2/texto.txt && chown user1:user1 /home/user1/pastausr1/texto.txt && chmod 644 /home/user1/pastausr1/texto.txt && chmod o+x /home/user1 /home/user2 && tail -f /dev/null"
